@@ -1,24 +1,48 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
-
-
+function maxOfTwoNumbers(num1,num2) {
+  if (num1 > num2 ) { return num1 }
+  if (num2 > num1 ){ return num2 }
+  if (num1 === num2) { return (num1,num2)}
+}
+console.log(maxOfTwoNumbers(9,9));
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord() {}
+function findLongestWord(words) {
+  if (words.length === 0) {return null}
+  
+  for (let i = 0; i < words.length; i++) {
+   if ( words.length  <  words[i].length ) {
+      words = words[i] ;
+  }
+  }
+  return words;
+}
+  console.log(findLongestWord(words));
 
 
 
 // Iteration #3: Calculate the sum
-const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
+const numbersArray=[6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+function sumNumbers(numbers) {
+  let sum = 0;
+  for( const item of numbers) {
+    sum += item ;
+  }
+  console.log(sum);
+  return sum;
+  }
+  sumNumbers([6, 12, 1, 18, 13, 16, 2, 1, 8, 10]);
+
 
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(array) {
+  if (array === 0) { return 0}
+}
 
 
 
@@ -26,7 +50,32 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(numbersAvg) {
+  const numbers = [2, 6, 9, 10, 7, 4, 1, 9];
+
+if ( numbersAvg.length === 0 ) 
+{ return null }
+
+else {
+  sumNumbers(numbers) / numbers[i];
+}
+}
+
+// for (let result of numbersAvg) {
+//   for (let number of numbersAvg) {
+//     result += number;
+// }
+// //numbersAvg.forEach(function(numbersAvg) { result += numbersAvg }); <---????? does not work!!! why!!!
+
+// let average = result/ numbersAvg.length;
+//   result.push(average);
+  
+// }
+// }
+
+
+
+
 
 
 // Level 2: Array of strings
@@ -52,14 +101,43 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(elem) {
+  let newArr = [];
+  for (let i = 0; i < elem.length; i++)
+   if (newArr.indexOf(elem[i]) === -1) {
+    newArr.push(elem[i])
+  }
+
+  if (elem.length <= 0) {
+  return null;
+} else {
+  return newArr;
+}
+}
+console.log (newArr);
 
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(wordsFind) {
+  if (wordsFind.length <= 0) {
+    return null;
+  }
+  let arr = 0 
+  for (let i = 0 ; i < wordsFind.length; i++) {
+    if (wordsFind.wordsFind !== false)
+    return null;
+  }
+  let trueIfIn = 0 ;
+   for ( let i = 0 ; i = wordsFind >=  1 ; i++) {
+    trueIfIn.push[i];
+    console.log ('true');
+   }
+
+  }
+
 
 
 

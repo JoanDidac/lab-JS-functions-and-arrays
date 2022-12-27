@@ -12,7 +12,7 @@ const shuffle = (currentArray) => {
   return array;
 };
 
-
+console.log('Node installed!');
 
 describe('Find the maximum', () => {
   it('should declare a function named maxOfTwoNumbers', () => {
