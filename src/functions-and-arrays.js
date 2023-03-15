@@ -40,9 +40,55 @@ function sumNumbers(numbers) {
 
 
 // Iteration #3.1 Bonus:
+
+
 function sum(array) {
-  if (array === 0) { return 0}
+  if (!Array.isArray(array)) {
+    throw new Error('Unsupported data type: input must be an array with numbers, strings or booleans');
+  }
+  return array.reduce((accumulator, currentValue) => {
+    if (typeof currentValue === 'number') {
+      return accumulator + currentValue;
+    } else if (typeof currentValue === 'boolean') {
+      return accumulator + Number(currentValue);
+    } else if (typeof currentValue === 'string') {
+      const number = parseFloat(currentValue);
+      if (!isNaN(number)) {
+        return accumulator + number;
+      } else {
+        return accumulator;
+      }
+    } else {
+      throw new Error('Unsupported data type: ' + typeof currentValue);
+    }
+  }, 0);
 }
+
+// #3.2 Geeneric Sum() Function:
+
+function sum(array) {
+  if (!Array.isArray(array)) {
+    throw new Error('Unsupported data type');
+  }
+  
+  return array.reduce((accumulator, currentValue) => {
+    if (typeof currentValue === 'number' || typeof currentValue === 'boolean') {
+      return accumulator + currentValue;
+    } else if (typeof currentValue === 'string') {
+      return accumulator + currentValue.length;
+    } else {
+      throw new Error('Unsupported data type: ' + typeof currentValue);
+    }
+  }, 0);
+}
+
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+console.log(sum(mixedArr)); // should return 57
+
+
+
+
+
 
 
 
@@ -50,28 +96,18 @@ function sum(array) {
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers(numbersAvg) {
-  const numbers = [2, 6, 9, 10, 7, 4, 1, 9];
-
-if ( numbersAvg.length === 0 ) 
-{ return null }
-
-else {
-  sumNumbers(numbers) / numbers[i];
+function averageNumbers(array) {
+  if (!Array.isArray(array)) {
+    throw new Error('Unsupported data type: input must be an array');
+  }
+  const length = array.length;
+  if (length === 0) {
+    return null;
+  }
+  const sum = array.reduce((accumulator, currentValue) => accumulator + currentValue);
+  return sum / length;
 }
-}
 
-// for (let result of numbersAvg) {
-//   for (let number of numbersAvg) {
-//     result += number;
-// }
-// //numbersAvg.forEach(function(numbersAvg) { result += numbersAvg }); <---????? does not work!!! why!!!
-
-// let average = result/ numbersAvg.length;
-//   result.push(average);
-  
-// }
-// }
 
 
 
@@ -81,10 +117,73 @@ else {
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(words) {
+  if (!Array.isArray(words) || words.length === 0) {
+    return null;
+  }
+
+  const totalLength = words.reduce((accumulator, currentValue) => {
+    if (typeof currentValue === 'string') {
+      return accumulator + currentValue.length;
+    } else {
+      throw new Error('Unsupported data type: ' + typeof currentValue);
+    }
+  }, 0);
+
+  return totalLength / words.length;
+}
+
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) {
+    return null;
+  }
+
+  const sum = arr.reduce((acc, val) => {
+    let numVal;
+    if (typeof val === 'number') {
+      numVal = val;
+    } else if (typeof val === 'boolean') {
+      numVal = val ? 1 : 0;
+    } else if (typeof val === 'string') {
+      numVal = val.length;
+    } else {
+      numVal = 0;
+    }
+    return acc + numVal;
+  }, 0);
+
+  const count = arr.reduce((acc, val) => {
+    if (typeof val === 'number' || typeof val === 'boolean' || typeof val === 'string') {
+      return acc + 1;
+    } else {
+      return acc;
+    }
+  }, 0);
+
+  const average = sum / count;
+
+  return average.toFixed(1);
+}
+
+function doesWordExist(arr, word) {
+  if (!Array.isArray(arr) || arr.length === 0) {
+    return null;
+  }
+
+  const filteredArr = arr.filter(val => val === word);
+
+  if (filteredArr.length === 1) {
+    return true;
+  } else if (filteredArr.length === 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -142,6 +241,15 @@ function doesWordExist(wordsFind) {
 
 
 // Iteration #7: Count repetition
+function doesWordExist(words, word) {
+  if (!Array.isArray(words) || words.length === 0) {
+    return null;
+  }
+  
+  return words.includes(word);
+}
+
+
 const wordsCount = [
   'machine',
   'matter',
@@ -156,7 +264,21 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(arr, word) {
+  if (!Array.isArray(arr) || arr.length === 0) {
+    return 0;
+  }
+  
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === word) {
+      count++;
+    }
+  }
+  
+  return count;
+}
+
 
 
 
